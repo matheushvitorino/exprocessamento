@@ -1,0 +1,41 @@
+version: '3'
+services:
+  no1: 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: no1
+    ports:
+      - 5001:5000
+    networks:
+      - rede_app
+  no2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: no2
+    ports:
+      - 5002:5000
+    networks:
+      - rede_app      
+  no3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: no3
+    ports:
+      - 5003:5000
+    networks:
+      - rede_app
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    ports:
+      - 80:80
+    networks:
+      - rede_app
+    volumes:
+    - ./nginx.conf:/etc/nginx/nginx.conf
+networks:
+  rede_app:
+    driver: bridge

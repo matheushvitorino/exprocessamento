@@ -2,11 +2,9 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-@app.route('/processamento', methods=['POST'])
+@app.route('/', methods=['POST'])
 def process_data():
     dados = request.json
-    if not dados:
-        return jsonify({"error": "Nenhum dado enviado"}), 400
 
     processo_dados = {"original": dados, "processo": "dados processados com sucesso"}
     
