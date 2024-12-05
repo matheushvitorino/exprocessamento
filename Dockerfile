@@ -12,6 +12,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copia o código do aplicativo para o container
 COPY . .
+RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf
+
 
 # Define a porta que o Flask usará
 EXPOSE 5000
